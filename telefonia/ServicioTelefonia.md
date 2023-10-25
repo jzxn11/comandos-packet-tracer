@@ -41,8 +41,8 @@ Dada la siguiente topología, levantar un servicio de telefonía:
 1. R1_SOPORTE(config)#telephony-service
 2. R1_SOPORTE(config-telephony)#max-ephones 2 #en este caso solo necesitamos 2 telefonos
 3. R1_SOPORTE(config-telephony)#max-dn 2
-R1_SOPORTE(config-telephony)#ip source-address 40.40.40.1 port 2000 #el puerto puede variar
-4. R1_SOPORTE(config-telephony)#auto assign 1 to 2
+4. R1_SOPORTE(config-telephony)#ip source-address 40.40.40.1 port 2000 #el puerto puede variar
+5. R1_SOPORTE(config-telephony)#auto assign 1 to 2
 ```
 
 - **Asignar numeros a los telefonos**
