@@ -88,6 +88,35 @@ Router(config-if)#no shut
 - MultilayerSwitch0(config)#vtp mode server
 ```
 
+- **Levantar el servicio del port-channel**
+
+```pkt
+- MultilayerSwitch0(config)#int range fa0/1-8
+- MultilayerSwitch0(config-if-range)#shut
+- MultilayerSwitch0(config-if-range)#exit
+
+- MultilayerSwitch0(config)#int range fa0/1-2
+- MultilayerSwitch0(config-if-range)#channel-group 1 mode active
+
+- MultilayerSwitch0(config-if-range)#int range fa0/3-4
+- MultilayerSwitch0(config-if-range)#channel-group 2 mode active
+
+- MultilayerSwitch0(config-if-range)#int range fa0/5-6
+- MultilayerSwitch0(config-if-range)#channel-group 3 mode desirable
+
+- MultilayerSwitch0(config-if-range)#int range fa0/7-8
+- MultilayerSwitch0(config-if-range)#channel-group 4 mode desirable
+
+- MultilayerSwitch0(config-if-range)#int range fa0/1-8
+- MultilayerSwitch0(config-if-range)#no shut
+- MultilayerSwitch0(config-if-range)#exit
+
+- MultilayerSwitch0(config-if)#int port-channel 1
+- MultilayerSwitch0(config-if)#switchport mode trunk
+- MultilayerSwitch0(config-if)#int port-channel 2
+- MultilayerSwitch0(config-if)#switchport mode trunk
+```
+
 ## Switch0
 
 - **Levantar el servicio VTP junto con el port-channel**
@@ -103,16 +132,60 @@ Router(config-if)#no shut
 - Switch0(config-if)#switchport mode trunk
 ```
 
+- **Levantar servicio vtp**
+
+```pkt
+- Switch0(config)#vtp mode client
+- Switch0(config)#vtp password diaD
+- Switch0(config)#vtp domain diaD.com
+```
+
+- **Habilitacion de Vlans y port-channel**
+
+```pkt
+- Switch0(config)#interface fa0/3
+- Switch0(config-if)#switchport mode access
+- Switch0(config-if)#switchport access vlan 101
+- Switch0(config-if)#exit
+- Switch0(config)#interface port-channel 1
+- Switch0(config-if)#switchport trunk allowed vlan 101
+```
+
 ## Switch1
 
 - **Levantar el port-channel**
 
 ```pkt
 - Switch1(config)#int range fa0/3-4
-- Switch1(config-if-range)#shutdown
+- Switch1(config-if-range)#shut
 - Switch1(config-if-range)#channel-group 2 mode active
-- Switch1(config-if-range)#no shutdown
+- Switch1(config-if-range)#no shut
 - Switch1(config-if-range)#exit
 - Switch1(config)#int port-channel 2
-- Switch1(config-if)#switchport mode trunk
+- Switch1(config-if)#swi mode trunk
+```
+
+- **Levantar servicio vtp**
+
+```pkt
+- Switch1(config)#vtp mode client
+- Switch1(config)#vtp password diaD
+- Switch1(config)#vtp domain diaD.com
+```
+
+- **Estableciendo en modo troncal los puertos y el port-channel**
+
+```pkt
+- Switch1(config)#int port-channel 2
+- Switch1(config-if)#swi mode trunk
+- Switch1(config)#exit
+- Switch1(config)#int fa0/3
+- Switch1(config-if)#swi mode trunk
+- Switch1(config-if)#exit
+- Switch1(config)#int fa0/20
+- Switch1(config-if)#swi mode access
+- Switch1(config-if)#swi access vlan 102
+- Switch1(config-if)#exit
+- Switch1(config)#int port-channel 2
+- Switch1(config-if)#swi trunk allowed vlan 102
 ```
