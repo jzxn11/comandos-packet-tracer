@@ -1,0 +1,17 @@
+VTP 
+
+VTP SERVER
+
+vtp domain practica.com
+vtp password cisco
+vtp mode server --> solo un servidor en vtp
+
+VTP CLIENT
+
+vtp domain practica.com
+vtp password cisco
+vtp mode server --> solo un client
+
+show vtp counters -> si alguien se conectó
+show vtp status -> información general
+
