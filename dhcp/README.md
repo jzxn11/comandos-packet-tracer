@@ -8,6 +8,7 @@
 Router(config)#ip dhcp pool nombreServicioDhcp
 Router(dhcp-config)#network redServicioDhcp 255.255.255.0
 Router(dhcp-config)#default-router gatewayServicioDhcp
+Router(dhcp-config)#dns-server 8.8.8.8 //OPCIONAL
 Router(dhcp-config)#exit
 Router(config)#ip dhcp excluded-address inicioRangoIp finalRangoIp
 ```
