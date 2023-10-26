@@ -21,4 +21,6 @@ Default Gateway: IP DE LA INTERFAZ DEL ROUTER QUE ES GATEWAY DE LAS PCS
 DNS: 8.8.8.8  
 Start IP Address: primer address permitido  
 Maximum Number of Users: maximo numero de usuarios  
-Click en Add para añadir
+Click en Add para añadir  
+
+### Router:
